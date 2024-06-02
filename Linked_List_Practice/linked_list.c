@@ -19,6 +19,10 @@ void PrintList(Node* first);
 void FreeList(Node* first);
 Node* SearchNode(Node* first, int item);
 void InsertNode(Node* node, int item);
+void push_front(int item);
+void push_back(int item);
+Node* DeleteNode( Node* first,Node* node);
+void Reverse();
 
 int main(){
 
@@ -136,4 +140,84 @@ void InsertNode(Node* node, int item){
     new_node->next = node->next;
     // Point the original node to new node
     node -> next = new_node;
+}
+
+// Insert a node to the front of the list
+void push_front(int  item){
+    Node * new_node;
+    new_node = (Node*)malloc(sizeof(Node));
+    new_node->data = item;
+    new_node->next = first_node; // new node pointer point to original first node
+    first_node = new_node;  // Update the first node to the new node
+}
+
+// Insert a node to the back of the list
+void push_back(int item){
+    Node * new_node;
+    new_node = (Node*)malloc(sizeof(Node));
+    new_node->data = item;
+    new_node->next = NULL;
+    // Handle empty list
+    if (first_node == NULL){
+        first_node = new_node;
+    }
+    else{
+        // Initailize the current node to the first node for traversal
+        Node * current_node = first_node;
+        while (current_node->next != NULL){
+            // traverse through the list
+            current_node = current_node->next;
+        }
+        // Point to the new node
+        current_node->next = new_node;
+    }
+}
+
+Node* DeleteNode(Node* first ,Node* node){
+    Node* ptr= first;
+    if (first == NULL)
+    {
+        print("Noting to print\n");
+    }
+    // Delete first node of the list
+    if (node == first){
+        // Update the first pointer to the next node
+        first = first->next;
+        free(node);
+        return first;
+    }
+    else{
+        // ptr traverse through the list
+        while (ptr->next != node)
+        {
+            ptr = ptr->next;
+        }
+        ptr->next = node->next;
+        free(node);
+        return first;
+        
+    }
+}
+
+void Reverse(){
+    
+    
+    Node * current, previous, preceding;
+    previous = NULL;
+    current = first_node;
+    // preceding node store the previous address of the current node
+    preceding = first_node->next;
+    
+    while (preceding != NULL){
+        // pointer the current node to the NULL (previous) node
+        current->next = previous;
+        // Update previous poinert to current pointer
+        previous = current;
+        // Update current pointer to the preceding point
+        current = preceding;
+        // Update the preceding pointer to the next node;
+        preceding = preceding->next;
+    }
+    current->next = previous;
+    first_node=current;    
 }
