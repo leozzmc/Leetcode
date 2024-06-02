@@ -59,6 +59,10 @@ int main(){
         PrintList(first_node);
     }
 
+    printf("Reverse the list\n");
+    Reverse();
+    PrintList(first_node);
+
     FreeList(first_node);
 
     system("pause");
@@ -177,7 +181,7 @@ Node* DeleteNode(Node* first ,Node* node){
     Node* ptr= first;
     if (first == NULL)
     {
-        print("Noting to print\n");
+        printf("Noting to print\n");
     }
     // Delete first node of the list
     if (node == first){
@@ -202,7 +206,7 @@ Node* DeleteNode(Node* first ,Node* node){
 void Reverse(){
     
     
-    Node * current, previous, preceding;
+    Node *current, *previous, *preceding;
     previous = NULL;
     current = first_node;
     // preceding node store the previous address of the current node
@@ -218,6 +222,6 @@ void Reverse(){
         // Update the preceding pointer to the next node;
         preceding = preceding->next;
     }
-    current->next = previous;
+    current->next =previous;
     first_node=current;    
 }
