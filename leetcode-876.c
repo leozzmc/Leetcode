@@ -83,37 +83,51 @@ void FreeList(Node* first){
 
 }
 
-Node * middleNode(Node *first){
-    Node *current = first;
-    Node *middle= NULL;
-    int counter=0;
-    int middleNodeIndex;
-    bool isEven;
+// // Apporach 1
+// Node * middleNode(Node *first){
+//     Node *current = first;
+//     Node *middle= NULL;
+//     int counter=0;
+//     int middleNodeIndex;
+//     bool isEven;
 
 
-    // (1) Get the length of list (2) Get the index of the middle
-    while (current != NULL){
-        counter++;
-        if(counter%2 == 0){
-            isEven = true;
-            middleNodeIndex = counter/2;
-        }
-        else{
-            isEven = false;
-            middleNodeIndex = (int)(floor(counter/2));
-        }
-        current = current->next;
+//     // (1) Get the length of list (2) Get the index of the middle
+//     while (current != NULL){
+//         counter++;
+//         if(counter%2 == 0){
+//             isEven = true;
+//             middleNodeIndex = counter/2;
+//         }
+//         else{
+//             isEven = false;
+//             middleNodeIndex = (int)(floor(counter/2));
+//         }
+//         current = current->next;
         
-    }
+//     }
     
 
-    current = first;
-    for (int i=0; i<counter; i++){
-        if ( i == middleNodeIndex){
-            middle = current;
-            break;
-        }
-        current = current->next;
+//     current = first;
+//     for (int i=0; i<counter; i++){
+//         if ( i == middleNodeIndex){
+//             middle = current;
+//             break;
+//         }
+//         current = current->next;
+//     }
+//     return middle;
+// }
+
+// Apporach 2
+Node * middleNode(Node *first){
+    Node *fast_ptr, *slw_ptr;
+    fast_ptr = first;
+    slw_ptr = first;
+
+    while (fast_ptr != NULL){
+        fast_ptr = fast_ptr->next->next;
+        slw_ptr = slw_ptr->next;
     }
-    return middle;
+    return  slw_ptr;
 }
