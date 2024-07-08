@@ -61,6 +61,10 @@
     "stdio.h": "c",
     "iostream": "cpp",
     "unordered_map": "cpp",
-    "ostream": "cpp"
+    "ostream": "cpp",
+    "string_view": "cpp",
+    "deque": "cpp",
+    "string": "cpp",
+    "vector": "cpp"
   }
 }
