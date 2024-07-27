@@ -67,6 +67,7 @@
     "string": "cpp",
     "vector": "cpp",
     "array": "cpp",
+<<<<<<< HEAD
     "atomic": "cpp",
     "bit": "cpp",
     "*.tcc": "cpp",
@@ -104,5 +105,8 @@
     "stdexcept": "cpp",
     "streambuf": "cpp",
     "typeinfo": "cpp"
+=======
+    "initializer_list": "cpp"
+>>>>>>> 6714a748e4cfb9c785968e162cd07f5476f4a30d
   }
 }
