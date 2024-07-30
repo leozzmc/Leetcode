@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/Kevin/Leetcode/Stack",
-      "program": "c:/Users/Kevin/Leetcode/Stack/build/Debug/outDebug",
+      "cwd": "c:/Users/Kevin/Leetcode/Tree",
+      "program": "c:/Users/Kevin/Leetcode/Tree/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
