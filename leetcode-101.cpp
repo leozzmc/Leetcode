@@ -58,7 +58,9 @@ bool BT::isMirror(TreeNode* leftNode, TreeNode* rightNode){
     if(leftNode == NULL && rightNode == NULL) return true;
         if(leftNode == NULL || rightNode == NULL) return false;
         
-        if (leftNode->val == rightNode->val && isMirror(leftNode->left, leftNode->right) && isMirror(rightNode->left, rightNode->right)) return true;
+        if (leftNode->val == rightNode->val && 
+            isMirror(leftNode->left, leftNode->right) && 
+            isMirror(rightNode->left, rightNode->right)) return true;
         else return false;
 
 }
