@@ -100,7 +100,8 @@
     "numbers": "cpp",
     "stdexcept": "cpp",
     "streambuf": "cpp",
-    "typeinfo": "cpp"
+    "typeinfo": "cpp",
+    "ios": "cpp"
   },
   "C_Cpp.errorSquiggles": "disabled"
 }
