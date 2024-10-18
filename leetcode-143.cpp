@@ -22,33 +22,59 @@ void PrintList(Node *first){
     }
 }
 
+ListNode* reverseList(ListNode *head){
+    ListNode *prev = NULL;
+    ListNode *cur = head;
+    while( cur != nullptr){
+        ListNode* nextTemp = cur->next;
+        cur->next = prev;
+        prev =cur;
+        cur = nextTemp;
+    }
+    return prev;
+}
+
 void reorderList(ListNode* head){
+    if (!head || !head->next) return;
     Node *ptr1 = head;
     Node *ptr2 = head;
 
     // Find the middle node  of the list
-    while( ptr1 != nullptr && ptr2 != nullptr  && ptr2->next !=nullptr){
+    while( ptr2->next!= nullptr  && ptr2->next->next !=nullptr){
         ptr1 = ptr1->next;
         ptr2 = ptr2->next->next;
     }
     // Now the ptr2 point to the end of the list, and the ptr1 point to the middle node
-    
     // Reverse the second half of the list
-    Node *new_head = ptr1 -> next;
-    
 
+    ptr2 = reverseList(ptr1->next);
+    ptr1->next =  nullptr;
+
+    ptr1=head;
+    while(ptr2 != nullptr){
+        ListNode *nextPtr = ptr1->next;
+        ListNode *nextPtr2 = ptr2->next;
+        
+        ptr1->next =  ptr2;
+        ptr1 = nextPtr;
+        ptr2->next =  ptr1;
+        ptr2 = nextPtr2;
+
+    }
 
 }
 
 int main(){
 
-    Node *nodeA = new Node(4, nullptr);
-    Node *nodeB = new Node(3, nodeA);
-    Node *nodeC = new Node(2, nodeB);
-    Node *nodeD = new Node(1, nodeC);
+    Node *nodeD = new Node(4, nullptr);
+    Node *nodeC = new Node(3, nodeD);
+    Node *nodeB = new Node(2, nodeC);
+    Node *nodeA = new Node(1, nodeB);
 
     //Test output
-    PrintList(nodeD);
+    PrintList(nodeA);
+    reorderList(nodeA);
+    PrintList(nodeA);
 
 
     return 0;
